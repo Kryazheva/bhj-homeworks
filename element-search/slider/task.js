@@ -7,19 +7,23 @@ let active = arrSelector.findIndex((value) => value.classList.contains('slider__
 next.onclick = () => {
     if (active > arrSelector.length - 1) {
         active = 0;
-    }
+    } else {
         arrSelector[active].classList.remove('slider__item_active');
         active = active + 1;
-        arrSelector[active].classList.add('slider__item_active'); 
+        arrSelector[active].classList.add('slider__item_active');
+    }
+         
 }
 
 prev.onclick = () => {
     if (active == -1) {
         active = arrSelector.length - 1;
     }
-    arrSelector[active].classList.remove('slider__item_active');
+    arrSelector[active].classList.toogle('slider__item_active');
     active = active - 1;
-    arrSelector[active].classList.add('slider__item_active');
+    // arrSelector[active].classList.add('slider__item_active');
     
     
 }
+
+ 
