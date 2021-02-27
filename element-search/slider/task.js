@@ -5,25 +5,20 @@ let arrSelector = Array.from(document.getElementsByClassName('slider__item'));
 let active = arrSelector.findIndex((value) => value.classList.contains('slider__item_active'));
 
 next.onclick = () => {
-    if (active > arrSelector.length - 1) {
+    arrSelector[active].classList.remove('slider__item_active');
+    active++;
+    if (active === arrSelector.length - 1) {
         active = 0;
-    } else {
-        arrSelector[active].classList.remove('slider__item_active');
-        active = active + 1;
-        arrSelector[active].classList.add('slider__item_active');
     }
-         
-}
+    arrSelector[active].classList.add('slider__item_active');
+};
 
 prev.onclick = () => {
-    if (active == -1) {
+    arrSelector[active].classList.remove('slider__item_active');
+    active--;
+    if (active < 0) {
         active = arrSelector.length - 1;
     }
-    arrSelector[active].classList.toogle('slider__item_active');
-    active = active - 1;
-    // arrSelector[active].classList.add('slider__item_active');
-    
-    
-}
+    arrSelector[active].classList.add('slider__item_active');
+};
 
- 
