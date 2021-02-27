@@ -7,7 +7,6 @@ let active = arrSelector.findIndex((value) => value.classList.contains('slider__
 next.onclick = () => {
     if (active > arrSelector.length - 1) {
         active = 0;
-        arrSelector[active].classList.add('slider__item_active');
     }
         arrSelector[active].classList.remove('slider__item_active');
         active = active + 1;
