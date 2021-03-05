@@ -1,12 +1,28 @@
 const arrRotatorCase = Array.from(document.getElementsByClassName('rotator__case'));
-arrRotatorCase.forEach( (element) => {
-    setInterval( () => {
-     delElementOfArr(element);
-        element.style.color = element.dataset.color;
-    },element.dataset.speed);    
-});
+const rotator = document.getElementsByClassName('rotator');
+let active = arrRotatorCase.findIndex((value) => value.classList.contains('rotator__case_active'));
 
-let delElementOfArr = (e) => {
-    e.classList.contains('rotator__case_active') ? e.classList.remove('rotator__case_active') : e.classList.add('rotator__case_active');
+let getActiveElement = (arr) => {
+    arr.forEach ((elem) => {
+        delClass (arr);
+        elem.style.color = elem.dataset.color;
+    })
 };
 
+arrRotatorCase.forEach((elem) => {
+    setInterval(() => {
+        getActiveElement(arrRotatorCase);
+    }, elem.dataset.speed);
+});
+
+
+
+let delClass = (arr) => {
+  arr[active].classList.remove('rotator__case_active');
+  active++;
+  if (active === arr.length - 1) {
+    active = 0;
+  }
+  arr[active].classList.add('rotator__case_active');
+  return active;
+};
