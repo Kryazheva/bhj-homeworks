@@ -6,10 +6,14 @@ classFontSize.forEach (element => {
         e.preventDefault();
         delClass(classFontSize);
         delClassFontSize(classContent);
-        toggleFontSize(classFontSize);   
+        // toggleFontSize(classFontSize);   
         // console.log(e.target);
         // console.log(element.dataset.size);
-        if (element.dataset.size === 'small' || element.dataset.size === 'big') {
+        if (element.dataset.size === 'small') {
+            classContent.classList.add('book_fs-small');
+            element.classList.add('font-size_active');
+        } else if (element.dataset.size === 'big') {
+            classContent.classList.add('book_fs-big');
             element.classList.add('font-size_active');
         } else {
             element.classList.add('font-size_active');
@@ -32,19 +36,6 @@ let delClassFontSize = (element) => {
     } else if (element.classList.contains('book_fs-small')) {
         element.classList.remove('book_fs-small');
     } else {
-        element.classList.remove('book_fs-small');
-        element.classList.remove('book_fs-big');
+        '';
     }
-};
-
-let toggleFontSize = (arr) => {
-    arr.forEach((element) => {
-        if (element.classList.contains('font-size_small')) {
-          classContent.classList.toggle('book_fs-small');
-        } else if (element.classList.contains('font-size_big')) {
-          classContent.classList.toggle('book_fs-big');
-        } else {
-          '';
-        }
-    })
 };
