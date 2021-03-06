@@ -40,9 +40,9 @@ let delClassFontSize = (element) => {
 let toggleFontSize = (arr) => {
     arr.forEach((element) => {
         if (element.classList.contains('font-size_small')) {
-          classContent.classList.add('book_fs-small');
+          classContent.classList.toggle('book_fs-small');
         } else if (element.classList.contains('font-size_big')) {
-          classContent.classList.add('font-size_big');
+          classContent.classList.toggle('book_fs-big');
         } else {
           '';
         }
