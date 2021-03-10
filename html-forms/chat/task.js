@@ -10,7 +10,7 @@ const arrBotMessage = ['Добрый день!', 'Чем могу помочь',
 //     console.log(e.target)
 // };
 let setLength = (i) => {
-    if (i.value.length > 3) {
+    if (i.value.length <= 0) {
         console.log(i.value);
         return false;
     };
@@ -32,7 +32,6 @@ let postClientMessage = (element, input, cont) => {
     const text = arrTemplate.querySelector('.message__text');
     time.textContent = new Date().toTimeString();
     text.textContent = input.value;
-    // console.log(input.value)
     cont.appendChild(arrTemplate);
 };
 
@@ -41,7 +40,7 @@ buttonChat.addEventListener('click', () => {
 });
 
 input.addEventListener('keydown', (e) => {
-    setLength(input);
+    setLength(input); //не работает, скорее всего нужно проверку делать при вызове функции postClientMessage, но тоже не срабатывает и как отменить отправку?
     if (e.code === 'Enter') {
      postClientMessage (message, input, conteiner);
      setTimeout(() => {
