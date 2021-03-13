@@ -5,23 +5,13 @@ const conteiner = document.getElementById('chat-widget__messages');
 const template = document.querySelector('template').content;
 const message = template.querySelector('.message');
 const arrBotMessage = ['Добрый день!', 'Чем могу помочь', 'Мы вам перезвоним'];
-// console.log(openChat)
-// input.onfocus = (e) => {
-//     console.log(e.target)
-// };
-let setLength = (i) => {
-    if (i.value.length <= 0) {
-        console.log(i.value);
-        return false;
-    };
-};
 
 let postBotMessage = (element, arr, cont) => {
     //   console.log(element.cloneNode(true))
     const arrTemplate = element.cloneNode(true);
     const time = arrTemplate.querySelector('.message__time');
     const text = arrTemplate.querySelector('.message__text');
-    time.textContent = new Date().toTimeString();
+    time.textContent = new Date().toTimeString().replace(/ .*/, '');
     text.textContent = arr[Math.floor(Math.random() * arr.length)];
     cont.appendChild(arrTemplate);
 };
@@ -30,7 +20,8 @@ let postClientMessage = (element, input, cont) => {
     const arrTemplate = element.cloneNode(true);
     const time = arrTemplate.querySelector('.message__time');
     const text = arrTemplate.querySelector('.message__text');
-    time.textContent = new Date().toTimeString();
+    arrTemplate.classList.add('message_client');
+    time.textContent = new Date().toTimeString().replace(/ .*/, '');
     text.textContent = input.value;
     cont.appendChild(arrTemplate);
 };
@@ -40,7 +31,9 @@ buttonChat.addEventListener('click', () => {
 });
 
 input.addEventListener('keydown', (e) => {
-    setLength(input); //не работает, скорее всего нужно проверку делать при вызове функции postClientMessage, но тоже не срабатывает и как отменить отправку?
+    if (input.value === "") {
+        return false;
+    }
     if (e.code === 'Enter') {
      postClientMessage (message, input, conteiner);
      setTimeout(() => {
