@@ -7,13 +7,16 @@ const form = document.querySelector('#tasks__form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (input.value === '') {
+    //match(/^[ ]+$/) метод проверяет, если в тексте одни пробелы
+    if (input.value === '' || input.value.match(/^[ ]+$/)) {
         return false;
-    }
+    }   
     const cloneFragment = task.cloneNode(true);
     const taskText = cloneFragment.querySelector('.task__title');
-    taskText.textContent = input.value;
+    //метод trim удаляет пробел с начала и с конца строки
+    taskText.textContent = input.value.trim();
     container.appendChild(cloneFragment);
+    input.value = '';
 })
 
 container.addEventListener('click', (e) => {
@@ -21,3 +24,4 @@ container.addEventListener('click', (e) => {
         e.target.closest('div.task').remove();
     }
 })
+
