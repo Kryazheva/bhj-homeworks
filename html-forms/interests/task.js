@@ -2,16 +2,18 @@
 const arrLi = document.querySelector('.interest');
 const arrInput = Array.from(document.getElementsByClassName('interest__check'));
 
-// arrInput.forEach((input) => {
-//     input.addEventListener('change', (e) => {
-//         if (e.target.closest('li.interest')) {
-//             console.log('y')
-//         } 
-//     })
-// })
+arrInput.forEach(input => {
+    input.addEventListener('change', (e) => {
+        let checkboxes = e.target.closest('.interest').querySelectorAll('input[type="checkbox"]');
 
-document.querySelector('.interests_main').addEventListener('change', e => {
-    if (e.target.className === 'interest__check') {
-        console.log('yes')
-    }
-})
+        if ( e.target.checked ) {
+            checkboxes.forEach( el => {
+                el.checked = true;
+            });
+            } else {
+            checkboxes.forEach( el => {
+                el.checked = false;
+            });
+        }
+    })
+});
