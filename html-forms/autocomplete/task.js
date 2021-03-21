@@ -68,19 +68,19 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    const optionText = this.input.options[this.input.selectedIndex].text;
-    const inputValue = this.input.value;
-    const searchValue = this.searchInput.value;
-
-      if (optionText.includes(searchValue)) {
-        return [
-          {
-            text: optionText,
-            value: inputValue
-          }
-        ]
+    // console.log(text)
+    const optionText = Array.from(this.input.options);
+    const arr = [];
+    optionText.forEach((element) => {
+      if (element.textContent.includes(text)) {
+        arr.push({
+          text: element.text,
+          value: element.value
+        })
       }
-  
+    });
+
+    return arr;
 
 
     /*
