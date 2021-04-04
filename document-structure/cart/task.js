@@ -21,16 +21,17 @@ products.addEventListener('click', (e) => {
     } 
     if (target.className === 'product__add') {
         if(containerCarts.children.length !==0) {
-            Array.from(containerCarts.children).find((item) => {
-                if (item.dataset.id === targetId) {
-                  item.querySelector('.cart__product-count').textContent = Number(item.querySelector('.cart__product-count').textContent) + Number(valueResult.textContent);
-                }
-            })
+         let result = Array.from(containerCarts.children).find(item => item.dataset.id === targetId);
+        //  console.log(result)
+           if (result) {
+              return result.querySelector('.cart__product-count').textContent = Number(result.querySelector('.cart__product-count').textContent) + Number(valueResult.textContent);
+           }     
         }
       let cloneFragmetn = cloneTemplate.cloneNode(true);
       let text = cloneFragmetn.querySelector('.cart__product-count');
       let img = cloneFragmetn.querySelector('.cart__product-image');
       cloneFragmetn.dataset.id = targetId;
+      console.log(cloneFragmetn.dataset.id)
       img.src = imgTarget;
       text.textContent = valueResult.textContent;
       containerCarts.appendChild(cloneFragmetn);
