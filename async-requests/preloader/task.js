@@ -18,10 +18,10 @@ xhr.onreadystatechange = () => {
     imgLoader.classList.toggle('loader_active');
     
     for (let forexItem in forex) {
-        forexConrainer.insertAdjacentHTML("afterBegin",
-        `<div class="item__code">${forex[forexItem].CharCode}</div>
-        <div class="item__value">${forex[forexItem].Value}</div>
-        <div class="item__currency">руб.</div>`);
+        forexConrainer.querySelector('.item').insertAdjacentHTML("afterBegin",
+        `<div class="item__code"> ${forex[forexItem].CharCode} </div> 
+        <div class="item__value"> ${forex[forexItem].Value} </div> 
+        <div class="item__currency"> руб.</div> `);
     }
 }
 
