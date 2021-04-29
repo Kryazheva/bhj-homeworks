@@ -35,3 +35,7 @@ body {
 .welcome_active {
   display: block;
 }
+
+.row {
+  margin-bottom: 0,5em;
+}
