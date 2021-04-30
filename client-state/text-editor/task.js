@@ -12,6 +12,6 @@ window.addEventListener('load', () => {
 });
 
 clearButton.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.removeItem('value');
     textEditor.value = '';
 });
