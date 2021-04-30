@@ -15,8 +15,6 @@ arrRotatorCase.forEach((elem) => {
     }, elem.dataset.speed);
 });
 
-
-
 let delClass = (arr) => {
   arr[active].classList.remove('rotator__case_active');
   active++;
